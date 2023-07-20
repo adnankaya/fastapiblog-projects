@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title}}</title>
+    <!-- project CSS -->
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- HEADER -->
+        <header>
+            <br>
+            {% block core_header%}
+            <nav>
+                <a href="/">Home</a>
+                <a href="/employees/">Employee</a>
+                <a href="/roles/">Role</a>
+                <a href="/departments/">Department</a>
+                <a href="/companies/">Company</a>
+            </nav>
+            {% endblock core_header%}
+        </header>
+        <hr>
+        <br>
+        <!-- BODY -->
+        {% block core_body%}
+        <h1>body</h1>
+        {% endblock core_body%}
+        <hr>
+        <br>
+        <!-- FOOTER -->
+        <footer>
+            {% block core_footer%}
+            <h2>Happy coding with <a href="/">fastapi.blog</a></h2>
+            <br>
+            {% endblock core_footer%}
+        </footer>
+    </div>
+</body>
+</html>

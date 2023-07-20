@@ -1,0 +1,32 @@
+{% extends 'core.html' %}
+{% block core_body%}
+<div class="index">
+    <div class="card">
+        <form action="/companies/" method="post">
+            <label for="idcompany">
+                <span>Company Name: </span>
+                <input type="text" name="companyname" id="idcompany">
+            </label>
+            <button class="btn" type="submit">Submit</button>
+        </form>
+    </div>
+    <h2>You can see Companies on this page.</h2>
+    {% if companies %}
+    {% for company in companies %}
+    <div class="card">
+        <div>
+            <a href="/companies/{{company.id}}">
+                [{{company.id}}]
+                {{company.name}}
+            </a>
+            <form action="/companies/{{company.id}}/delete/" method="POST">
+                <button class="btn btn-danger btn-sm" onclick="return confirm('Are you sure to delete?')">
+                    Delete
+                </button>
+            </form>
+        </div>
+    </div>
+    {% endfor %}
+    {% endif %}
+</div>
+{% endblock core_body%}

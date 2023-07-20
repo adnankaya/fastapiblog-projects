@@ -1,0 +1,73 @@
+{% extends 'core.html' %}
+{% block core_body%}
+<div class="index">
+    <h2>Employees detail page.</h2>
+    <div class="card">
+        <div class="card-body">
+            <a href="/employees/{{employee.id}}">
+                [{{employee.id}}]
+                <span>
+                    <b>{{employee.firstname}}</b>
+                    <b>{{employee.lastname}}</b>
+                </span>
+            </a>
+            <br>
+            <small>Title: {{employee.title}}</small>
+            <br>
+            <small>Bio: {{employee.bio}}</small>
+            <br>
+            <small>Age: {{employee.age}}</small>
+            <br>
+            <small>Department: {{employee.department.name}}</small>
+            <br>
+            <small>Role: {{employee.role.name}}</small>
+        </div>
+    </div>
+    <h2>Edit Employee</h2>
+    <div class="card">
+        <form action="/employees/{{employee.id}}/update" method="post">
+            <label for="idDepartment">
+                <span>Select Department: </span>
+                <select name="department_id" id="idDepartment">
+                    {% for department in departments %}
+                    <option value="{{department.id}}" {%if department.id==employee.department.id %}selected{%endif%}>
+                        {{department.name}}</option>
+                    {% endfor %}
+                </select>
+            </label>
+            <br>
+            <label for="idFirstname">
+                <span>firstname: </span>
+                <input type="text" name="firstname" value="{{employee.firstname}}" id="idFirstname">
+            </label>
+            <label for="idLastname">
+                <span>lastname: </span>
+                <input type="text" name="lastname" value="{{employee.lastname}}" id="idLastname">
+            </label>
+            <label for="idtitle">
+                <span>title: </span>
+                <input type="text" name="title" value="{{employee.title}}" id="idtitle">
+            </label>
+            <label for="idage">
+                <span>age: </span>
+                <input type="number" min="20" name="age" value="{{employee.age}}" id="idage">
+            </label>
+            <br>
+            <label for="idbio">
+                <span>bio: </span>
+                <textarea name="bio" id="idbio" cols="30" rows="10">{{employee.bio}}</textarea>
+            </label>
+            <label for="idRole">
+                <span>Select Role: </span>
+                <select name="role_id" id="idDepartment">
+                    {% for role in roles %}
+                    <option value="{{role.id}}" {%if role.id==employee.role.id %}selected{%endif%}>{{role.name}}</option>
+                    {% endfor %}
+                </select>
+            </label>
+            <br>
+            <button class="btn" type="submit">Submit</button>
+        </form>
+    </div>
+</div>
+{% endblock core_body%}

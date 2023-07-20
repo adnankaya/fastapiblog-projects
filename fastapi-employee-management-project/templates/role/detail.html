@@ -1,0 +1,20 @@
+{% extends 'core.html' %}
+{% block core_body%}
+<div class="index">
+    <h2>Role Detail Page</h2>
+    <p>
+        ID: {{role.id}}
+        <br>
+        NAME: {{role.name}}
+    </p>
+    <h2>Edit Role</h2>
+    <div class="card">
+        <form action="/roles/{{role.id}}/update" method="post">
+            <label for="idRoleName">
+                <input type="text" value="{{role.name}}" name="rolename" id="idRoleName">
+            </label>
+            <button class="btn" type="submit">Update</button>
+        </form>
+    </div>
+</div>
+{% endblock core_body%}

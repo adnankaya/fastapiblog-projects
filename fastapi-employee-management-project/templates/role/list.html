@@ -1,0 +1,36 @@
+{% extends 'core.html' %}
+{% block core_body%}
+<div class="index">
+    <div class="card">
+        <form action="/roles/" method="post">
+            <label for="idRoleName">
+                <span>Role Name: </span>
+                <input type="text" name="rolename" id="idRoleName">
+            </label>
+            <button class="btn" type="submit">Submit</button>
+        </form>
+    </div>
+    <h2>You can see Roles on this page.</h2>
+    {% if roles %}
+    {% for role in roles %}
+    <div class="card">
+        <div>
+            <a href="/roles/{{role.id}}">
+                [{{role.id}}]
+                {{role.name}}
+            </a>
+            <form action="/roles/{{role.id}}/delete/" method="POST">
+                <button class="btn btn-danger btn-sm" onclick="return confirm('Are you sure to delete?')">
+                    Delete
+                </button>
+            </form>
+        </div>
+    </div>
+    {% endfor %}
+    {% else %}
+    <div class="card">
+        <h2>Roles not registered yet!</h2>
+    </div>
+    {% endif %}
+</div>
+{% endblock core_body%}

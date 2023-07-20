@@ -1,0 +1,50 @@
+{% extends 'core.html' %}
+{% block core_body%}
+<div class="index">
+    <h2>Add New Employee</h2>
+    <div class="card">
+        <form action="/employees/" method="post">
+            <label for="idDepartment">
+                <span>Select Department: </span>
+                <select name="department_id" id="idDepartment">
+                    {% for department in departments %}
+                    <option value="{{department.id}}">{{department.name}}</option>
+                    {% endfor %}
+                </select>
+            </label>
+            <br>
+            <label for="idFirstname">
+                <span>firstname: </span>
+                <input type="text" name="firstname" id="idFirstname">
+            </label>
+            <label for="idLastname">
+                <span>lastname: </span>
+                <input type="text" name="lastname" id="idLastname">
+            </label>
+            <label for="idtitle">
+                <span>title: </span>
+                <input type="text" name="title" id="idtitle">
+            </label>
+            <label for="idage">
+                <span>age: </span>
+                <input type="number" min="20" name="age" id="idage">
+            </label>
+            <br>
+            <label for="idbio">
+                <span>bio: </span>
+                <textarea name="bio" id="idbio" cols="30" rows="10"></textarea>
+            </label>
+            <label for="idRole">
+                <span>Select Role: </span>
+                <select name="role_id" id="idDepartment">
+                    {% for role in roles %}
+                    <option value="{{role.id}}">{{role.name}}</option>
+                    {% endfor %}
+                </select>
+            </label>
+            <br>
+            <button class="btn" type="submit">Submit</button>
+        </form>
+    </div>
+</div>
+{% endblock core_body%}

@@ -1,0 +1,30 @@
+{% extends 'core.html' %}
+{% block core_body%}
+<div class="index">
+    <h2>Department Detail Page</h2>
+    <p>
+        ID: {{department.id}}
+        <br>
+        NAME: {{department.name}}
+    </p>
+    <h2>Edit department</h2>
+    <div class="card">
+        <form action="/departments/{{department.id}}/update" method="post">
+            <label for="iddepartmentName">
+                <input type="text" value="{{department.name}}" name="departmentname" id="iddepartmentName">
+            </label>
+            <button class="btn" type="submit">Update</button>
+        </form>
+    </div>
+    <ul>
+        <h3>Employees</h3>
+        {% for emp in department.employees %}
+        <li>
+            <a href="/employees/{{emp.id}}">
+                ID: {{emp.id}} | {{emp.firstname}} {{emp.lastname}}
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock core_body%}

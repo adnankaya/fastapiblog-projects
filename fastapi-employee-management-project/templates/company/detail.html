@@ -1,0 +1,26 @@
+{% extends 'core.html' %}
+{% block core_body%}
+<div class="index">
+    <h2>Company Detail Page</h2>
+    <p>
+        ID: {{company.id}}
+        <br>
+        NAME: {{company.name}}
+    </p>
+    <h2>Edit company</h2>
+    <div class="card">
+        <form action="/companies/{{company.id}}/update" method="post">
+            <label for="idcompanyName">
+                <input type="text" value="{{company.name}}" name="companyname" id="idcompanyName">
+            </label>
+            <button class="btn" type="submit">Update</button>
+        </form>
+    </div>
+    <ul>
+        <h3>Departments</h3>
+        {% for dep in company.departments %}
+        <li>#ID:{{dep.id}} | #NAME: {{dep.name}}</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock core_body%}
